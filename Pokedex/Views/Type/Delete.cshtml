@@ -1,0 +1,26 @@
+﻿@model Pokedex.Models.Type
+
+@{
+    ViewData["Title"] = "Eliminar Tipo";
+}
+
+<h1>Elmiminar tipo de pokemon</h1>
+
+<h3>Estas a punto de borrar un tipo de pokemon!! Estas seguro?</h3>
+<div>
+    <h4>Tipo</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+           <lable>@Model.Name</lable>
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Volver a la Lista</a>
+    </form>
+</div>
