@@ -8,7 +8,7 @@ namespace Pokedex.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Upss.. Debes seleccionar un tipo")]
+        [Required(ErrorMessage = "Upss.. Debes colocar un nombre")]
         [Display(Name = "Nombre")]
         public string Name { get; set; }
 
@@ -20,7 +20,8 @@ namespace Pokedex.Models
         [Display(Name = "Region")]
         public int? RegionFk { get; set; }
 
-        [Required(ErrorMessage = "Upss.. Debes colocar un nombre")]
+        [Required(ErrorMessage = "Upss.. Debes colocar al menos un poder")]
+        [Display(Name = "Poderes")]
         public string Powers { get; set; }
 
         public virtual Region RegionFkNavigation { get; set; }

@@ -1,0 +1,52 @@
+﻿@model Pokedex.Models.Pokemon
+
+@{
+    ViewData["Title"] = "Editar Pokemon";
+}
+
+<h1>Editar Pokemon</h1>
+
+<h4>Pokemon</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" value="@ViewBag.CurrentName"/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeFk" class="control-label"></label>
+                <select asp-for="TypeFk" class="form-control" asp-items="@(new SelectList(@ViewBag.Tipos,"Id","Name"))">
+                    <option value="@ViewBag.CurrentTypeNameId">@ViewBag.CurrentTypeName</option>
+                </select>
+                <span asp-validation-for="TypeFk" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegionFk" class="control-label"></label>
+                <select asp-for="RegionFk" class="form-control" asp-items="@(new SelectList(@ViewBag.Regiones,"Id","Name"))">
+                    <option value="@ViewBag.CurrentRegionNameId">@ViewBag.CurrentRegionName</option>
+                </select>
+                <span asp-validation-for="RegionFk" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Powers" class="control-label"></label>
+                <input asp-for="Powers" class="form-control" value="@ViewBag.CurrentPowers"/>
+                <span asp-validation-for="Powers" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver a la Lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -38,3 +38,7 @@ C:\Users\eljos\source\repos\Pokedex\Pokedex\obj\Debug\netcoreapp2.2\Razor\Views\
 C:\Users\eljos\source\repos\Pokedex\Pokedex\obj\Debug\netcoreapp2.2\Razor\Views\Region\Create.cshtml.g.cs
 C:\Users\eljos\source\repos\Pokedex\Pokedex\obj\Debug\netcoreapp2.2\Razor\Views\Region\Edit.cshtml.g.cs
 C:\Users\eljos\source\repos\Pokedex\Pokedex\obj\Debug\netcoreapp2.2\Razor\Views\Region\Delete.cshtml.g.cs
+C:\Users\eljos\source\repos\Pokedex\Pokedex\obj\Debug\netcoreapp2.2\Razor\Views\Pokemon\Index.cshtml.g.cs
+C:\Users\eljos\source\repos\Pokedex\Pokedex\obj\Debug\netcoreapp2.2\Razor\Views\Pokemon\Create.cshtml.g.cs
+C:\Users\eljos\source\repos\Pokedex\Pokedex\obj\Debug\netcoreapp2.2\Razor\Views\Pokemon\Edit.cshtml.g.cs
+C:\Users\eljos\source\repos\Pokedex\Pokedex\obj\Debug\netcoreapp2.2\Razor\Views\Pokemon\Delete.cshtml.g.cs
