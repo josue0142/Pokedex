@@ -14,7 +14,35 @@ namespace Pokedex.Controllers
         {
             using (DBPokedexContext db = new DBPokedexContext()) 
             {
-                return View(db.Region.ToList());
+
+                var regions = db.Region.ToList();
+
+                foreach (var item in regions)
+                {
+                    switch (item.Name)
+                    {
+                        case "katto":
+                            item.color = "table-danger";
+                            break;
+                        case "johto":
+                            item.color = "table-primary";
+                            break;
+                        case "hoenn":
+                            item.color = "table-warning";
+                            break;
+                        case "orre":
+                            item.color = "table-success";
+                            break;
+                        case "sinnoh":
+                            item.color = "table-info";
+                            break;
+                        default:
+                            item.color = "table-dark";
+                            break;
+                    }
+                }
+
+                return View(regions);
             }              
         }
 
