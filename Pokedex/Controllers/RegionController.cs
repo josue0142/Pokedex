@@ -59,6 +59,7 @@ namespace Pokedex.Controllers
             {
                 using (DBPokedexContext db = new DBPokedexContext())
                 {
+                    region.Name = region.Name.ToLower();
                     db.Region.Add(region);
                     db.SaveChanges();
 
@@ -85,7 +86,7 @@ namespace Pokedex.Controllers
                 using (DBPokedexContext db = new DBPokedexContext())
                 {
                     Region region1 = db.Region.Find(region.Id);
-                    region1.Name = region.Name;
+                    region1.Name = region.Name.ToLower();
                     db.SaveChanges();
 
                     return RedirectToAction("Index", "Region");
