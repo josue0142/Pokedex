@@ -16,6 +16,8 @@ namespace Pokedex.Models
         [Required(ErrorMessage = "Upss.. Debes colocar un nombre" )]
         [Display(Name = "Nombre del Tipo")]
         public string Name { get; set; }
+                
+        public string color { get; set; }
 
         public virtual ICollection<Pokemon> Pokemon { get; set; }
     }

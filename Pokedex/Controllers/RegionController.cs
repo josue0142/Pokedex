@@ -14,7 +14,35 @@ namespace Pokedex.Controllers
         {
             using (DBPokedexContext db = new DBPokedexContext()) 
             {
-                return View(db.Region.ToList());
+
+                var regions = db.Region.ToList();
+
+                foreach (var item in regions)
+                {
+                    switch (item.Name)
+                    {
+                        case "kanto":
+                            item.color = "table-danger";
+                            break;
+                        case "johto":
+                            item.color = "table-primary";
+                            break;
+                        case "hoenn":
+                            item.color = "table-warning";
+                            break;
+                        case "orre":
+                            item.color = "table-success";
+                            break;
+                        case "sinnoh":
+                            item.color = "table-info";
+                            break;
+                        default:
+                            item.color = "table-dark";
+                            break;
+                    }
+                }
+
+                return View(regions);
             }              
         }
 
@@ -31,6 +59,7 @@ namespace Pokedex.Controllers
             {
                 using (DBPokedexContext db = new DBPokedexContext())
                 {
+                    region.Name = region.Name.ToLower();
                     db.Region.Add(region);
                     db.SaveChanges();
 
@@ -57,7 +86,7 @@ namespace Pokedex.Controllers
                 using (DBPokedexContext db = new DBPokedexContext())
                 {
                     Region region1 = db.Region.Find(region.Id);
-                    region1.Name = region.Name;
+                    region1.Name = region.Name.ToLower();
                     db.SaveChanges();
 
                     return RedirectToAction("Index", "Region");

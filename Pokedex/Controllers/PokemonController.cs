@@ -15,7 +15,34 @@ namespace Pokedex.Controllers
         {
             using (DBPokedexContext db = new DBPokedexContext())
             {
-                return View(db.Pokemon.Include(region => region.RegionFkNavigation).Include(type => type.TypeFkNavigation).ToList());
+                var pokemon = db.Pokemon.Include(region => region.RegionFkNavigation).Include(type => type.TypeFkNavigation).ToList();
+
+                foreach (var item in pokemon)
+                {
+                    switch (item.RegionFkNavigation.Name)
+                    {
+                        case "katto":
+                            item.RegionFkNavigation.color = "table-danger";
+                            break;
+                        case "johto":
+                            item.RegionFkNavigation.color = "table-primary";
+                            break;
+                        case "hoenn":
+                            item.RegionFkNavigation.color = "table-warning";
+                            break;
+                        case "orre":
+                            item.RegionFkNavigation.color = "table-success";
+                            break;
+                        case "sinnoh":
+                            item.RegionFkNavigation.color = "table-info";
+                            break;
+                        default:
+                            item.RegionFkNavigation.color = "table-dark";
+                            break;
+                    }
+                }
+
+                return View(pokemon);
             }          
         }
 
@@ -46,6 +73,7 @@ namespace Pokedex.Controllers
             {
                 using (DBPokedexContext db = new DBPokedexContext())
                 {
+                    pokemon.Name = pokemon.Name.ToLower();
                     db.Pokemon.Add(pokemon);
                     db.SaveChanges();
 
@@ -98,7 +126,7 @@ namespace Pokedex.Controllers
                 using (DBPokedexContext db = new DBPokedexContext())
                 {
                     Pokemon pokemon1 = db.Pokemon.Find(pokemon.Id);
-                    pokemon1.Name = pokemon.Name;
+                    pokemon1.Name = pokemon.Name.ToLower();
                     pokemon1.RegionFk = pokemon.RegionFk;
                     pokemon1.TypeFk = pokemon.TypeFk;
                     pokemon1.Powers = pokemon.Powers;
@@ -118,7 +146,8 @@ namespace Pokedex.Controllers
         {
             using (DBPokedexContext db = new DBPokedexContext())
             {
-                return View(db.Pokemon.Find(id));
+                return View(db.Pokemon.Where(a => a.Id == id).Include(region => region.RegionFkNavigation
+                ).Include(type => type.TypeFkNavigation).FirstOrDefault());
             }
         }
 
