@@ -1,16 +1,16 @@
 ﻿@model IEnumerable<Pokedex.Models.Region>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Regiones";
 }
 
-<h1>Index</h1>
+<h1><i class="fas fa-globe-europe"></i> Regiones</h1>
 
 <p>
-    <a asp-action="Create">Crear Nueva</a>
+    <a class="btn btn-outline-dark" asp-action="Create" role="button"><i class="fas fa-plus"></i> Añadir Region</a>
 </p>
-<table class="table">
-    <thead>
+<table class="table table-borderless">
+    <thead class="thead-dark">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
@@ -19,16 +19,17 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                <a asp-controller="Region" asp-action="Edit" asp-route-id="@item.Id">Editar</a>|
-                <a asp-controller="Region" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr class="@item.color">
+                <td class="font-weight-bold text-capitalize">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td align="right">
+                    <a class="btn btn-light btn-sm"asp-controller="Region" asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-edit"></i> Editar</a>
+                    <a class="btn btn-danger btn-sm" asp-controller="Region" asp-action="Delete" asp-route-id="@item.Id"><i class="fas fa-trash-alt"></i> Eliminar</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
