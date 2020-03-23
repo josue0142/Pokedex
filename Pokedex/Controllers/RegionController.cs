@@ -21,7 +21,7 @@ namespace Pokedex.Controllers
                 {
                     switch (item.Name)
                     {
-                        case "katto":
+                        case "kanto":
                             item.color = "table-danger";
                             break;
                         case "johto":
